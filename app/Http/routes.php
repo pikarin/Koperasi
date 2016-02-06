@@ -1,61 +1,23 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
 Route::get('/', function () {
     return View::make('welcome');
-})->middleware('auth');
+})->middleware(['auth.superadmin', 'auth.admin']);
 
-Route::group(['middleware' => 'web', 'prefix' => 'administrator'], function () {
-  Route::get('simpanan/export', ['uses'=>'SimpananController@export']);
-  Route::resource('anggota', 'AnggotaController');
-  Route::resource('simpanan', 'SimpananController');
-  Route::get('home', 'HomeController@index');
+Route::group(['middleware' => 'web'], function() {
+    Route::auth();
+
+    Route::group(['prefix' => 'administrator', 'middleware' => 'auth.admin'], function () {
+        Route::get('simpanan/export', 'SimpananController@export');
+        Route::resource('simpanan', 'SimpananController');
+        Route::resource('anggota', 'AnggotaController');
+        Route::get('home', 'HomeController@index')->name('admin.home');
+    });
+  
+    Route::group(['prefix' => 'superadmin', 'middleware' => 'auth.superadmin'], function(){
+        Route::get('anggota', 'Admin\UserController@index');
+        Route::get('simpanan', 'Admin\SimpananController@index');
+        Route::get('home', 'Admin\HomeController@index')->name('superadmin.home');
+    });
 
 });
-
-Route::group(['middleware' => 'web'], function () {
-  Route::auth();
-});
-
-
-
-// PREFIX ADMIN
-//
-// Route::group(['prefix' => 'admin'], function () {
-//   Route::get('/posts', 'PostController@index');
-//   Route::post('/post', 'PostController@store');
-//   Route::delete('/post/{post}', 'PostController@destroy');
-// });
-
-// ARRAY MIDDLEWARE
-//
-// Route::group(['middleware' => ['web']], function () {
-//     //
-// });
-
-// SAMPLING
-//
-// Route::get('anggotas', function(){
-//   $anggotas = DB::table('Anggotas')->get();
-//   return json_decode(json_encode($anggotas));
-// });

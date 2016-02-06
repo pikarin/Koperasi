@@ -25,6 +25,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        $gate->before(function ($user, $ability) {
+            if ($user->role_id === 1) {
+                return true;
+            }
+        });
+
+        $gate->define('lihat', function($user){
+          return $user->role_id === 1;
+        });
+
+        $gate->define('show_anggotas', function($user, $anggotas) {
+          return $user->id === $anggotas->user_id;
+        });
     }
 }

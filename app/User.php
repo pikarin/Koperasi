@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -23,4 +23,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role()
+    {
+      return $this->hasOne(Role::class);
+    }
+
 }

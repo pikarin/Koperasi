@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Data Anggota Sudah Masuk Ke Database!');
         $this->call(SimpanansSeeder::class);
         $this->command->info('Data Simpanan Sudah Masuk Ke Database!');
+        $this->call(RolesSeeder::class);
+        $this->command->info('Data Simpanan Sudah Masuk Ke Database!');
+        $this->call(UsersSeeder::class);
+        $this->command->info('Data Simpanan Sudah Masuk Ke Database!');
         Model::reguard();
     }
 }

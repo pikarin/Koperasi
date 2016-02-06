@@ -3,6 +3,7 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Gate;
 use App\Anggota; //MODEL ANGGOTA
 use App\Simpanan; //MODEL SIMPANAN
 use Illuminate\Http\Request;
@@ -71,12 +72,16 @@ class AnggotaController extends Controller
         $simpananswajib = Simpanan::where('anggota_id', $id)->sum('simpanan_wajib');
         $simpananssukarela = Simpanan::where('anggota_id', $id)->sum('simpanan_sukarela');
 
-        return view('anggotas.show', compact('anggotas'), [
-        'simpanans' => $simpanans,
-        'anggotas' => $anggotas,
-        'simpananswajib' => $simpananswajib,
-        'simpananssukarela' => $simpananssukarela,
-    ]);
+        if (Gate::denies('show_anggotas', $anggotas)){
+          abort(403);
+        }else {
+          return view('anggotas.show', compact('anggotas'), [
+          'simpanans' => $simpanans,
+          'anggotas' => $anggotas,
+          'simpananswajib' => $simpananswajib,
+          'simpananssukarela' => $simpananssukarela,
+      ]);
+        }
     }
 
     /**

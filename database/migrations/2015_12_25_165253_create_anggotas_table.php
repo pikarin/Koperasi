@@ -21,6 +21,7 @@ class CreateAnggotasTable extends Migration
             $table->string('pekerjaan');
             $table->string('telepon');
             $table->date('tanggal_daftar');
+            $table->string('photo');
 
         });
     }

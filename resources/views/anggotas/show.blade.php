@@ -51,7 +51,7 @@
               </tbody>
             </table>
           </div>
-          <a href=""><button type="button" class="btn btn-default">Kembali</button></a>
+          <a href="/administrator/anggota"><button type="button" class="btn btn-default">Kembali</button></a>
         </div>
       </div>
     </div>

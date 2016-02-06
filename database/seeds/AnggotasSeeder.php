@@ -12,7 +12,7 @@ class AnggotasSeeder extends Seeder
         DB::table('anggotas')->delete();
 
         $anggotas = [
-            ['user_id' => 1,
+        ['user_id' => 1,
           'no_identitas' => '14020310087',
           'nama' => 'Egi Nugraha',
           'tempat_lahir' => 'Bandung',
@@ -22,6 +22,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Full Stack Web Developer',
           'telepon' => '082318285185',
           'tanggal_daftar' => '2015-12-27',
+          'photo' => '',
         ],
         ['user_id' => 1,
           'no_identitas' => '14020310088',
@@ -33,6 +34,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Web Designer',
           'telepon' => '082318285188',
           'tanggal_daftar' => '2015-12-15',
+          'photo' => '',
         ],
         ['user_id' => 2,
           'no_identitas' => '14020310087',
@@ -44,6 +46,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Full Stack Web Developer',
           'telepon' => '082318285185',
           'tanggal_daftar' => '2015-12-27',
+          'photo' => '',
         ],
         ['user_id' => 2,
           'no_identitas' => '14020310087',
@@ -55,6 +58,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Full Stack Web Developer',
           'telepon' => '082318285185',
           'tanggal_daftar' => '2015-12-27',
+          'photo' => '',
         ],
         ['user_id' => 1,
           'no_identitas' => '14020310087',
@@ -66,6 +70,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Full Stack Web Developer',
           'telepon' => '082318285185',
           'tanggal_daftar' => '2015-12-27',
+          'photo' => '',
         ],
         ['user_id' => 2,
           'no_identitas' => '14020310083',
@@ -77,6 +82,7 @@ class AnggotasSeeder extends Seeder
           'pekerjaan' => 'Guru Sekolah Menengah Atas',
           'telepon' => '082318285132',
           'tanggal_daftar' => '2015-12-12',
+          'photo' => '',
         ],
         ];
 
